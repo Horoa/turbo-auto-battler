@@ -26,6 +26,14 @@ class Creature():
         self.vitesseAttaque = vitesseAttaque
         self.portee = portee
         self.niveau = niveau
+        
+class Shop():
+    def __init__(self, level, creatures, money, moneyMax, priceUp):
+        self.level = level
+        self.creatures = creatures
+        self.money = money
+        self.moneyMax = moneyMax
+        self.priceUp = priceUp
 
 
 def afficherUUI(pv, argent):
