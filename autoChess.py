@@ -28,8 +28,20 @@ class Creature():
         self.niveau = niveau
         
 class Shop():
-    def __init__(self, level, creatures, money, moneyMax, priceUp):
+    def __init__(self, level, sizeMax, creatures, money, moneyMax, priceUp, priceReroll):
         self.level = level
+        self.sizeMax = sizeMax
+        self.creatures = creatures
+        self.money = money
+        self.moneyMax = moneyMax
+        self.priceUp = priceUp
+        self.priceReroll = priceReroll
+        
+        
+class Reserve():
+    def __init__(self, level, sizeMax, creatures, money, moneyMax, priceUp):
+        self.level = level
+        self.sizeMax = sizeMax
         self.creatures = creatures
         self.money = money
         self.moneyMax = moneyMax
