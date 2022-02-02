@@ -3,10 +3,6 @@ from random import choice
 def jeu():
     pv=30
     argent=5
-    creatures = []
-    creatures.append(Creature("Gobelin", "G", 1, 1, 1, 1, 1, 1))
-    creatures.append(Creature("Loup", "L", 1, 1, 2, 1, 1, 1))
-    creatures.append(Creature("Humain", "H", 1, 1, 1, 1, 1, 1))
     
     plateau=[ ["" for i in range(12)] for j in range(12)]
     terrain=["" for i in range(12)]
@@ -17,15 +13,36 @@ def jeu():
     afficherTab(shop)
 
 class Creature():
-    def __init__(self, name, icone, prix, attaque, vitesse, vitesseAttaque, portee, niveau): 
+    def __init__(self, name, icone, prix, vie,vieMax, attaque, vitesse, vitesseAttaque, portee, niveau): 
         self.name = name
         self.icone = icone
         self.prix = prix
+        self.vie = vie
+        self.vieMax = vieMax
         self.attaque = attaque
         self.vitesse = vitesse
         self.vitesseAttaque = vitesseAttaque
         self.portee = portee
         self.niveau = niveau
+        self.estVivant = True
+        
+    def attaque(self,creature):
+        creature.subit(creature, self.attaque)
+        
+    def subit(self,degats):
+        self.vie = max(self.vie-degats,0)
+        if self.vie == 0:
+            self.meurt(self)
+            
+    def meurt(self):
+        self.estVivant = False
+        
+    def soigne(self,soin):
+        self.vie = min(self.vie + soin, self.vieMax)
+      
+    def soigneFull(self):
+        self.vie=self.vieMax
+        
         
 class Shop():
     def __init__(self, level, sizeMax, creatures, money, moneyMax, priceUp, priceReroll):
